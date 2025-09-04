@@ -11,12 +11,12 @@ import subprocess
 from sklearn.linear_model import LinearRegression
 from sklearn.impute import KNNImputer
 
-# ================== Page Config ==================
+
 st.set_page_config(page_title="Dhruv Gaur - Full Tech Dashboard", layout="wide")
 
 st.title("🧠 Dhruv Gaur | Team 48 | Full Task Dashboard")
 
-# Sidebar Menu
+
 menu = st.sidebar.selectbox("Select Task Category", [
     "📸 JavaScript + Docker Tasks",
     "🤖 Python Automation Tasks",
@@ -28,7 +28,7 @@ menu = st.sidebar.selectbox("Select Task Category", [
     "🐳 Docker Manager"
 ])
 
-# ================== 1. JS + Docker Tasks ==================
+
 if menu == "📸 JavaScript + Docker Tasks":
     task = st.selectbox("Select JS or Docker Task", [
         "Take Photo Using JS",
@@ -106,7 +106,7 @@ print(message.sid)
         else:
             st.info(f"Output for task '{task}' is currently simulated.")
 
-# ================== 2. Python Automation Tasks ==================
+
 elif menu == "🤖 Python Automation Tasks":
     task = st.selectbox("Choose a Python Automation Task", [
         "Live RAM Info Monitor",
@@ -195,7 +195,7 @@ my_list = [1, 2, 3]  # mutable
 my_tuple = (1, 2, 3)  # immutable
         """)
 
-# ================== 3. Machine Learning Tasks ==================
+
 elif menu == "📊 Machine Learning Tasks":
     st.header("Machine Learning Tasks")
     option = st.radio("Choose ML Task", [
@@ -207,7 +207,7 @@ elif menu == "📊 Machine Learning Tasks":
         "Q6. Salary Prediction from CSV + User Input"
     ])
 
-    # ---------- Q1 ----------
+   
     if option == "Q1. Missing Value Imputation Analysis":
         df = pd.DataFrame({'X1': [1, 2, 3, 4, 5, 6],'Y': [2.1, 4.1, np.nan, 8.3, np.nan, 12.2]})
         st.dataframe(df)
@@ -219,7 +219,7 @@ elif menu == "📊 Machine Learning Tasks":
         sns.scatterplot(data=df, x="X1", y="Y_imputed", ax=ax)
         st.pyplot(fig)
 
-    # ---------- Q2 ----------
+    
     elif option == "Q2. Fill Missing Y using Regression":
         df = pd.DataFrame({'X': [1, 2, 3, 4, 5, 6],'Y': [2.1, 4.1, None, 8.3, None, 12.2]})
         train = df.dropna()
@@ -229,7 +229,7 @@ elif menu == "📊 Machine Learning Tasks":
         df.loc[df['Y'].isnull(), 'Y'] = model.predict(test[['X']])
         st.dataframe(df)
 
-    # ---------- Q3 ----------
+   
     elif option == "Q3. Upload Dataset and Train Linear Regression":
         uploaded_file = st.file_uploader("Upload CSV Dataset", type=["csv"])
         if uploaded_file:
@@ -244,7 +244,7 @@ elif menu == "📊 Machine Learning Tasks":
                 st.write("Coefficients:", model.coef_)
                 st.write("Intercept:", model.intercept_)
 
-    # ---------- Q4 ----------
+  
     elif option == "Q4. House Price Prediction (Simple Linear Regression)":
         data = {'Size': [750, 800, 850, 900, 1000, 1100, 1200, 1400, 1600, 1800],
                 'Price': [150, 160, 170, 180, 200, 220, 240, 280, 320, 360]}
@@ -269,7 +269,7 @@ elif menu == "📊 Machine Learning Tasks":
             predicted_price = model.predict([[new_size]])[0]*1000
             st.success(f"Predicted price for {new_size} sqft house: ${predicted_price:.2f}")
 
-    # ---------- Q5 ----------
+   
     elif option == "Q5. Salary Prediction with Residual Plot":
         data = {'YearsExperience': [1.1, 1.3, 1.5, 2.0, 2.2, 2.9, 3.0, 3.2, 3.7, 3.9,
                                     4.0, 4.5, 4.9, 5.1, 5.3, 5.9, 6.0, 6.8, 7.1, 7.9],
@@ -305,7 +305,7 @@ elif menu == "📊 Machine Learning Tasks":
         st.write(f"Mean Squared Error: {mse:.2f}")
         st.write(f"R-squared (R²): {r2:.2f}")
 
-    # ---------- Q6 ----------
+  
     elif option == "Q6. Salary Prediction from CSV + User Input":
         uploaded_file = st.file_uploader("Upload CSV (YearsExperience, Salary)", type=["csv"])
         if uploaded_file:
@@ -320,7 +320,7 @@ elif menu == "📊 Machine Learning Tasks":
                 predicted_salary = model.predict([[experience]])[0]
                 st.success(f"Predicted salary for {experience} years of experience: ${predicted_salary:.2f}")
 
-# ================== 4. MongoDB Docker Setup ==================
+
 elif menu == "👣 MongoDB Docker Setup":
     st.header("Run MongoDB in Docker")
     if st.button("▶ Show Docker Command"):
@@ -332,7 +332,7 @@ docker run -d \\
   mongo
         """)
 
-# ================== 5. Fullstack Development Tasks ==================
+
 elif menu == "🌐 Fullstack Development Tasks":
     st.header("🌐 Fullstack Development Tasks")
     
@@ -520,11 +520,11 @@ if __name__ == '__main__':
         st.write("- 🔒 POST method for secure data transmission")
         st.write("- 📧 Email-based storage system")
 
-# ================== 6. Linux Basic Commands ==================
+
 elif menu == "🐧 Linux Basic Commands":
     st.header("💻 Linux Task List - Basic Commands")
 
-    # 🔹 LinkedIn Blog Links
+
     st.markdown("""
     ### 📚 Linux Learning Resources & My LinkedIn Posts:
     - **Blog post on companies using Linux:** [LinkedIn Post](https://www.linkedin.com/posts/dhruv-gaur-2107dg_linux-opensource-devops-activity-7348259621477781504-v6Ed?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEWBaZ4BRuc4gpx8zrn_FXT_z4jhJjvdkzQ)
@@ -576,11 +576,11 @@ elif menu == "🐧 Linux Basic Commands":
                     st.info(f"Command: {cmd}")
                     st.info("This command would be executed in a real environment.")
 
-    # Show last output at bottom
+   
     st.subheader("📜 Command Output:")
     st.info("Command output would be displayed here in a real environment.")
 
-# ================== 7. AI/ML Chatbot ==================
+
 elif menu == "🤖 AI/ML Chatbot":
     st.header("🤖 AI/ML Chatbot (Gemini)")
     st.write("Ask any question related to Artificial Intelligence, Machine Learning, Deep Learning, Data Science, or Python for ML.")
@@ -615,7 +615,7 @@ elif menu == "🤖 AI/ML Chatbot":
             else:
                 st.info("Please enter a question related to AI or ML.")
 
-        # Agentic AI Section
+      
         st.markdown("---")
         st.subheader("🧑‍🌾 Agentic AI for Farmer Solutions (Gemini + LangChain)")
         st.write("This section uses an agentic AI approach to help refine farmer startup ideas, perform market research, suggest business models, and more using Gemini and LangChain tools.")
@@ -699,14 +699,12 @@ elif menu == "🤖 AI/ML Chatbot":
     except ImportError:
         st.warning("Google Generative AI not installed. Install with: `pip install google-generativeai`")
 
-# ============================================================================
-# DOCKER MANAGER SECTION
-# ============================================================================
+
 
 import streamlit as st
 import subprocess
 
-# ================== 8. Docker Manager Functions ==================
+==
 
 def execute_remote(username, ip, command):
     """
@@ -750,7 +748,7 @@ def render_docker_page():
     """Render the Docker Manager page with SSH support"""
     st.markdown('<div class="main-header"><h1>🐳 Docker Remote Management (via SSH)</h1><p>Manage Docker containers, images, and operations on remote servers through SSH</p></div>', unsafe_allow_html=True)
     
-    # SSH Connection Configuration
+
     st.subheader("🔗 SSH Connection Configuration")
     col1, col2 = st.columns(2)
     
@@ -759,7 +757,7 @@ def render_docker_page():
     with col2:
         remote_ip = st.text_input("Remote IP Address:", placeholder="Enter IP address")
     
-    # Connection mode selection
+
     connection_mode = st.radio(
         "Select connection mode:",
         ["🔗 Remote (SSH)", "🖥️ Local"],
@@ -768,7 +766,7 @@ def render_docker_page():
     
     st.markdown("---")
     
-    # Docker action selection
+ 
     docker_action = st.selectbox(
         "Select Docker action:",
         ["Launch new container", "Stop container", "Remove container", "Start container", 
@@ -851,13 +849,13 @@ def render_docker_page():
     with col2:
         st.subheader("📊 Docker Information")
         
-        # Connection status
+     
         if connection_mode == "🔗 Remote (SSH)":
             st.success(f"🔗 Connected to: {remote_user}@{remote_ip}" if remote_user and remote_ip else "⚠️ Please provide remote username and IP address")
         else:
             st.info("🖥️ Using local Docker installation")
         
-        # Quick help
+      
         st.subheader("💡 Quick Help")
         st.markdown("""
         **🔗 Remote (SSH) Mode:**
@@ -869,7 +867,7 @@ def render_docker_page():
         - Requires local Docker installation
         """)
         
-        # Command history
+
         st.subheader("📝 Recent Commands")
         if "docker_history" not in st.session_state:
             st.session_state.docker_history = []
@@ -878,7 +876,7 @@ def render_docker_page():
             st.text(f"{i+1}. {cmd}")
 
 
-# ================== 9. Menu Handling ==================
+
 
 menu = st.sidebar.selectbox("Select Menu", [
     "📊 Dashboard",
